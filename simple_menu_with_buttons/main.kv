@@ -1,0 +1,158 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+WindowManager:
+    transition: FadeTransition(duration=.2, clearcolor=app.theme_cls.bg_dark)
+    MainWindow:
+    Level1Window:
+    Level2Window:
+    Level3Window:
+    HighScoreWindow:
+    SettingsWindow:
+    AboutWindow:
+
+<MainWindow>:
+    name: "main"
+    MDBackdrop:
+        id: backdrop
+        left_action_items: [['menu', lambda x: self.open()]]
+        title: "Settings"
+        header_text: ""
+        MDBackdropBackLayer:
+            text: "Back Drop"
+        MDBackdropFrontLayer:
+            text: "Front Layer"
+            MDTextButton:
+                text: "Level 1"
+                pos_hint: {"center_x":1.0,"center_y":1.}
+
+                on_release:
+                    print("fade")
+                    app.open_page("level1")
+                    app.root.current = "level1"
+
+            MDTextButton:
+                text: "Level 2"
+                pos_hint: {"center_x":0.0, "center_y":0.9}
+                on_release:
+                    app.open_page("level2")
+                    app.root.current = "level2"
+
+            MDFillRoundFlatButton:
+                text: "Level 3"
+                #pos_hint: {"center_x":0.5, "center_y":0.55}
+                on_release:
+                    app.open_page("level3")
+                    app.root.current = "level3"
+
+            MDFillRoundFlatButton:
+                text: "High Score"
+                #pos_hint: {"center_x":0.5, "center_y":0.45}
+                on_release:
+                    app.open_page("highscore")
+                    app.root.current = "highscore"
+
+            MDFillRoundFlatButton:
+                text: "Settings"
+                #pos_hint: {"center_x":0.5, "center_y":0.35}
+                on_release:
+                    app.open_page("settings")
+                    app.root.current = "settings"
+
+
+            MDFillRoundFlatButton:
+                text: "About"
+                #pos_hint: {"center_x":0.5, "center_y":0.25}
+                on_release:
+                    app.open_page("about")
+                    app.root.current = "about"
+
+
+
+
+
+
+<Level1Window>:
+    name: "level1"
+    BoxLayout:
+        MDLabel:
+            text: "Level1 go here"
+        MDBottomNavigation:
+            MDBottomNavigationItem:
+                name: "Main"
+                text: "Go Back"
+                icon: "arrow-left-thick"
+                on_tab_press:
+                    app.open_page("main")
+                    app.root.current = "main"
+
+<Level2Window>:
+    name: "level2"
+    BoxLayout:
+        MDLabel:
+            text: "Level2 go here"
+        MDBottomNavigation:
+            MDBottomNavigationItem:
+                name: "Main"
+                text: "Go Back"
+                icon: "arrow-left-thick"
+                on_tab_press:
+                    app.open_page("main")
+                    app.root.current = "main"
+
+<Level3Window>:
+    name: "level3"
+    BoxLayout:
+        MDLabel:
+            text: "Level3 go here"
+        MDBottomNavigation:
+            MDBottomNavigationItem:
+                name: "Main"
+                text: "Go Back"
+                icon: "arrow-left-thick"
+                on_tab_press:
+                    app.open_page("main")
+                    app.root.current = "main"
+
+
+
+<SettingsWindow>:
+    name: "settings"
+    BoxLayout:
+        MDLabel:
+            text: "Settings go here"
+        MDBottomNavigation:
+            MDBottomNavigationItem:
+                name: "Main"
+                text: "Go Back"
+                icon: "arrow-up-thick"
+                on_tab_press:
+                    app.open_page("main")
+                    app.root.current = "main"
+
+<AboutWindow>:
+    name: "about"
+    BoxLayout:
+        MDLabel:
+            text: "About this app goes here"
+        MDBottomNavigation:
+            MDBottomNavigationItem:
+                name: "Main"
+                text: "Go Back"
+                icon: "arrow-down-thick"
+                on_tab_press:
+                    app.open_page("main")
+                    app.root.current = "main"
+
+<HighScoreWindow>:
+    name: "highscore"
+    BoxLayout:
+        MDLabel:
+            text: "High Scores go here"
+        MDBottomNavigation:
+            MDBottomNavigationItem:
+                name: "Main"
+                text: "Go Back"
+                icon: "arrow-right-thick"
+                on_tab_press:
+                    app.open_page("main")
+                    app.root.current = "main"
